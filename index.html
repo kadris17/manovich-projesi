@@ -2,30 +2,23 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Zamanin Katmanlari - Kitap AR</title>
+    <title>Zamanin Katmanlari - Proje</title>
+    <!-- Kütüphane linkini güncelledik -->
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
-    <!-- uiLoading ve uiScanning'i kapattık ki doğrudan kamera açılsın -->
-    <a-scene mindar-image="imageTargetSrc: ./targets.mind; uiLoading: no; uiScanning: no;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <!-- uiScanning: yes yaparak tarama çerçevesini aktif ettik -->
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; uiLoading: no; uiScanning: yes;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       
-         <a-assets>
+      <a-assets>
         <img id="pumucklGorsel" src="pumuckl.png">
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
-        <!-- Kitap eğik durduğu için rotation ekledik -->
-        <!-- Boyutu (width/height) kitabın sayfasına göre buradan ayarlayabilirsin -->
-        <a-image src="#pumucklGorsel" 
-                 position="0 0 0.1" 
-                 rotation="0 0 0" 
-                 width="1" 
-                 height="1">
-        </a-image>
-        
-        <a-text value="Zamanin Katmanlari" color="blue" align="center" position="0 0.6 0.2" width="2"></a-text>
+        <a-image src="#pumucklGorsel" position="0 0 0.1" rotation="0 0 0" width="1" height="1"></a-image>
+        <a-text value="Zamanin Katmanlari" color="blue" align="center" position="0 0.7 0.1" width="2"></a-text>
       </a-entity>
 
     </a-scene>
