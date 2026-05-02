@@ -1,26 +1,56 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Zamanin Katmanlari - Proje</title>
-    <!-- Kütüphane linkini güncelledik -->
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>AR - Zamanin Katmanlari</title>
+    <!-- A-Frame ve AR.js Kütüphaneleri -->
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1.3.0/dist/aframe-master.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
+    <style>
+      * { margin: 0; padding: 0; }
+      body { overflow: hidden; background: #000; }
+    </style>
   </head>
   <body>
-    <!-- uiScanning: yes yaparak tarama çerçevesini aktif ettik -->
-    <a-scene mindar-image="imageTargetSrc: ./targets.mind; uiLoading: no; uiScanning: yes;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      
+    <a-scene
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true; precision: medium; alpha: true;"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono; matrixCodeType: 3x3;">
+
       <a-assets>
-        <img id="pumucklGorsel" src="pumuckl.png">
+        <!-- Görsel isminin GitHub'da tam olarak pumuckl.png olduğundan emin ol -->
+        <img id="pumucklGorsel" src="pumuckl.png" crossorigin="anonymous">
       </a-assets>
 
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <!-- Marker Dosyası -->
+      <a-marker type="pattern" url="pattern-marker.patt">
 
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-image src="#pumucklGorsel" position="0 0 0.1" rotation="0 0 0" width="1" height="1"></a-image>
-        <a-text value="Zamanin Katmanlari" color="blue" align="center" position="0 0.7 0.1" width="2"></a-text>
-      </a-entity>
+        <!-- Siyah fonu engellemek için alphaTest ve transparent ayarları eklendi -->
+        <a-image
+          src="#pumucklGorsel"
+          rotation="-90 0 0"
+          position="0 0.1 0"
+          width="1.2"
+          height="1.2"
+          material="transparent: true; alphaTest: 0.5; side: double;">
+        </a-image>
 
+        <!-- Proje Başlığı -->
+        <a-text 
+          value="Zamanin Katmanlari" 
+          color="#0000FF" 
+          align="center" 
+          rotation="-90 0 0" 
+          position="0 0.2 1" 
+          width="4">
+        </a-text>
+
+      </a-marker>
+
+      <a-entity camera></a-entity>
     </a-scene>
   </body>
 </html>
