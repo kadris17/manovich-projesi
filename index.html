@@ -2,20 +2,35 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+    <title>Zamanin Katmanlari - AR Projesi</title>
+    <!-- MindAR ve A-Frame kütüphaneleri -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    <!-- imageTargetSrc kısmının targets.mind ile aynı olduğundan eminiz -->
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       
-      <a-entity light="type: ambient; intensity: 1.5;"></a-entity>
-      <a-entity light="type: directional; intensity: 0.8;" position="1 2 1"></a-entity>
+      <a-assets>
+        <!-- Photoshop'ta hazırladığın şeffaf PNG'yi buraya ekliyoruz -->
+        <img id="figur" src="pumuckl.png"> 
+      </a-assets>
 
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- Hedef görsel (DSCF0396.JPG) tarandığında çalışacak alan -->
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="0.05 0.05 0.05" src="./pumuckl.glb"></a-gltf-model>
+        
+        <!-- Şeffaf Pumuckl Görseli -->
+        <!-- Boyutu width ve height değerlerinden (1 1) ayarlayabilirsin -->
+        <a-image src="#figur" position="0 0 0" width="1" height="1"></a-image>
+        
+        <!-- Senin Sergi Metnin -->
+        <!-- 'Zamanin Katmanlari' başlığını ekledik -->
+        <a-text value="Zamanin Katmanlari" color="blue" align="center" position="0 0.7 0.1" width="2"></a-text>
+        <a-text value="Sessiz Gurultu" color="black" align="center" position="0 0.5 0.1" width="1.5"></a-text>
+
       </a-entity>
+
     </a-scene>
   </body>
 </html>
