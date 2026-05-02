@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Zamanin Katmanlari - Manovich Projesi</title>
+    <title> - Manovich Projesi</title>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
@@ -15,14 +15,14 @@
       device-orientation-permission-ui="enabled: false">
       
       <a-assets>
-        <!-- Photoshop'ta arkasını şeffaf yaptığın dosya adı burada aynı olmalı -->
+        
         <img id="pumucklGorsel" src="pumuckl.png">
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
-        <!-- Pumuckl'ın boyutu ve şeffaflık ayarı -->
+        
         <a-image 
           src="#pumucklGorsel" 
           position="0 0 0.1" 
@@ -32,10 +32,10 @@
           material="transparent: true; alphaTest: 0.5;">
         </a-image>
         
-        <!-- Kitap sayfasının ismi -->
+       
         <a-text 
           value="Kulturel Arayuzlerin Dili" 
-          color="blue" 
+          color="black" 
           align="center" 
           position="0 0.7 0.2" 
           width="3">
